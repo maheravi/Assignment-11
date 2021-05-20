@@ -114,20 +114,20 @@ class Snake:
 
 
 if __name__ == "__main__":
-    width = 800
-    height = 600
 
-    d = pygame.display.set_mode((width, height))
-    pygame.display.set_caption('snake game')
-    font = pygame.font.SysFont('comicsansms', 40)
-    clock = pygame.time.Clock()
+    while True:
+        width = 800
+        height = 600
 
-    snake = Snake()
-    apple = Apple()
-    pear = Pear()
-    mine = Mine()
+        d = pygame.display.set_mode((width, height))
+        pygame.display.set_caption('snake game')
+        font = pygame.font.SysFont('comicsansms', 40)
+        clock = pygame.time.Clock()
 
-    while 1:
+        snake = Snake()
+        apple = Apple()
+        pear = Pear()
+        mine = Mine()
         d.fill((0, 0, 0))
         main_menu_message = font.render('Press anywhere to start the game', True, (255, 255, 255))
         font_pos = main_menu_message.get_rect(center=(width // 2, height // 2))
@@ -182,16 +182,18 @@ if __name__ == "__main__":
                     if snake.score < 0:
                         img = pygame.image.load('GameOver.png')
                         game_over = pygame.transform.scale(img, (width, height))
-                        d.blit(game_over, [0, 0])
-                        # time.sleep(3)
-                        # pygame.quit()
+                        d.blit(game_over, (0, 0))
+                        pygame.display.update()
+                        time.sleep(3)
+                        pygame.quit()
 
                     if snake.pos[0] > width or snake.pos[0] < 0 or snake.pos[1] > height or snake.pos[1] < 0:
                         img = pygame.image.load('GameOver.png')
                         game_over = pygame.transform.scale(img, (width, height))
-                        d.blit(game_over, [0, 0])
-                        # time.sleep(3)
-                        # pygame.quit()
+                        d.blit(game_over, (0, 0))
+                        pygame.display.update()
+                        time.sleep(3)
+                        pygame.quit()
 
                     pygame.display.update()
                     clock.tick(30)
